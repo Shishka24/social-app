@@ -1,29 +1,40 @@
-// import styled from "styled-components";
+import styled from "styled-components";
 
 const NavBar=()=>{
     return (
-      <nav className="nav">
+      <Nav className="nav">
       <div>
-        <a>Profile</a>
+        <A>Profile</A>
       </div>
       <div>
-        <a>Messages</a>
+        <A>Messages</A>
       </div>
       <div>
-        <a>News</a>
+        <A>News</A>
       </div>
       <div>
-        <a>Music</a>
+        <A>Music</A>
       </div>
       <div>
-        <a>Settings</a>
+        <A>Settings</A>
       </div>
-    </nav>
+    </Nav>
     )
 }
 export default NavBar;
 
 
-// const Img=styled.img`
-//     width: 20px;
-// `;
+const Nav=styled.div`
+    grid-area:h;
+  background-color: goldenrod;
+`
+const A=styled.a`
+  color:white;
+  cursor: pointer;
+  &:active{
+    color:blue;
+  }
+  &:hover{
+    color:black;
+  }
+`
