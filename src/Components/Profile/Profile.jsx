@@ -1,8 +1,15 @@
 import styled from "styled-components";
+<<<<<<< HEAD:src/Components/Profile.jsx
+
+const Profile=()=>{
+    return (
+      <Content >
+=======
 import MyPosts from "./MyPosts/MyPosts";
 
 const Profile=()=>{
     return (
+>>>>>>> origin/surfaceBranch:src/Components/Profile/Profile.jsx
       <div>
       <div>
         <Img
@@ -11,13 +18,34 @@ const Profile=()=>{
         />
       </div>
       <div>ava+desc</div>
+<<<<<<< HEAD:src/Components/Profile.jsx
+      <div>
+        My posts
+        <div>New post</div>
+      </div>
+      <PostDiv>Post1 </PostDiv>
+      <PostDiv>Post2 </PostDiv>
+    </Content>
+=======
      <MyPosts/>
     </div>
+>>>>>>> origin/surfaceBranch:src/Components/Profile/Profile.jsx
     )
 }
 export default Profile;
 
 
+<<<<<<< HEAD:src/Components/Profile.jsx
+const Content=styled.div`
+   grid-area: c;
+  background-color: lightsalmon;
+`;
+
+const PostDiv=styled.div`
+  color:lightblue;
+`
+=======
 const Img=styled.img`
     width: 700px;
 `;
+>>>>>>> origin/surfaceBranch:src/Components/Profile/Profile.jsx

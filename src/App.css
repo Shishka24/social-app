@@ -7,22 +7,20 @@
  "h c"; 
 grid-template-rows: 60px 1fr;
 grid-template-columns: 2fr 10fr ;
-/* grid-gap:200 px; */
-
 }
-.first{
+/* .first{
   grid-area:a;
   background-color: grey;
 }
 .first img{
   width: 60px;
-}
+} */
 
-.nav{
+/* .nav{
   grid-area:h;
   background-color: goldenrod;
-}
-.content{
+} */
+/* .content{
   grid-area: c;
   background-color: lightsalmon;
-}
+} */
