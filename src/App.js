@@ -1,14 +1,27 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./Components/Profile/Profile";
 import NavBar from "./Components/NavBar/NavBar";
 import Header from "./Components/Header/Header";
-function App() {
+import News from "./Components/News/News";
+import Dialogs from "./Components/Dialogs/Dialogs";
+
+function App(props) {
   return (
-    <div className="app-wrapper">
-      <Header/>
-      <NavBar/>
-      <Profile/>
-    </div>
+    <Router>
+      <div className="app-wrapper">
+        <Header />
+        <NavBar />
+        <div className="app-wrapper-content">
+          <Routes>
+            <Route path="/" exact element={<News />} />
+            <Route path="/dialogs" exact element={<Dialogs />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/news" exact element={<News />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 

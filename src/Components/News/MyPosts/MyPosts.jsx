@@ -1,17 +1,12 @@
 import Post from "./Post/Post";
-import styled from "styled-components";
 
 const MyPosts=()=>{
     return (
-      <PostsDiv>
-        <h3>My posts</h3>
+      <div>
+        My posts
         <div>
-          <div>
           <textarea></textarea>
-          </div>
-          <div>
           <button>Add Post</button>
-          </div>
           </div>
           <div>
         <Post message='Hey World '/>
@@ -20,12 +15,8 @@ const MyPosts=()=>{
         <Post/>
         <Post/>
         </div>
-      </PostsDiv>
+      </div>
     
     )
 }
-
-const PostsDiv=styled.div`
-  padding:20px;
-`;
 export default MyPosts;

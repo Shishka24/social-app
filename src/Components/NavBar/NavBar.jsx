@@ -1,22 +1,22 @@
 import styled from "styled-components";
-
+import { NavLink } from "react-router-dom";
 const NavBar=()=>{
     return (
       <Nav className="nav">
       <div>
-        <A>Profile</A>
+        <NavLinkStyled to="/profile" >Profile</NavLinkStyled>
       </div>
       <div>
-        <A>Messages</A>
+        <NavLinkStyled to="/dialogs">Messages</NavLinkStyled>
       </div>
       <div>
-        <A>News</A>
+      <NavLinkStyled to="/news">News</NavLinkStyled>
       </div>
       <div>
-        <A>Music</A>
+        <NavLinkStyled to="/">Music</NavLinkStyled>
       </div>
       <div>
-        <A>Settings</A>
+        <a>Settings</a>
       </div>
     </Nav>
     )
@@ -27,14 +27,19 @@ export default NavBar;
 const Nav=styled.div`
     grid-area:h;
   background-color: goldenrod;
-`
-const A=styled.a`
-  color:white;
-  cursor: pointer;
-  &:active{
-    color:blue;
-  }
+  font-size:22px;
+  
+  `
+const NavLinkStyled=styled(NavLink)`
+  color:black;
+  text-decoration:none;
+  cursor: pointer ;
+  
   &:hover{
-    color:black;
+    color:white;
+  }
+  &.active{
+    color:white;
   }
 `
+
