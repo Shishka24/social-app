@@ -28,7 +28,7 @@ function App(props) {
               path="/profile"
               element={
                 //props from the state
-                <Profile post={props.posts} />
+                <Profile post={props.posts} addPost={props.addPost} />
               }
             />
             <Route path="/news" exact element={<News />} />

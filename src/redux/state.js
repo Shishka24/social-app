@@ -59,5 +59,16 @@ let state = {
     ],
   },
 };
-
+//export without default
+export let addPost = (postMessage) => {
+  //create newObject for now hardcoding the id and likesCount
+  //for the message we give as value what we will receive from the inputArea
+  let newPost = {
+    id: 5,
+    message: postMessage,
+    likesCount: 0,
+  };
+  //create a function that push the newPost to the state.profilePage.post
+  state.profilePage.posts.push(newPost);
+};
 export default state;

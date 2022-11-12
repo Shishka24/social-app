@@ -7,7 +7,10 @@ const Profile=(props)=>{
     return (
       <MainDiv>
         <InfoProfile/>
-        <MyPosts post={props.post}/>
+        <MyPosts 
+        post={props.post}
+        //sending the function as a props
+        addPost={props.addPost}/>
     </MainDiv>
     )
 }
