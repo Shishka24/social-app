@@ -15,8 +15,22 @@ function App(props) {
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/" exact element={<News />} />
-            <Route path="/dialogs" exact element={<Dialogs />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/dialogs"
+              exact
+              element={
+                //props from the state
+                <Dialogs messages={props.messages} dialogs={props.dialogs} />
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                //props from the state
+                <Profile post={props.posts} />
+              }
+            />
             <Route path="/news" exact element={<News />} />
           </Routes>
         </div>

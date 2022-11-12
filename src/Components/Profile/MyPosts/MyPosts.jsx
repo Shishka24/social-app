@@ -1,8 +1,10 @@
 import Post from "./Post/Post";
 import styled from "styled-components";
 
-const MyPosts=()=>{
-    return (
+const MyPosts=(props)=>{ 
+  let postElements=props.post.map(m=><Post message={m.message} likesCount={m.likesCount}/> )
+
+  return (
       <PostsDiv>
         <h3>My posts</h3>
         <div>
@@ -14,11 +16,7 @@ const MyPosts=()=>{
           </div>
           </div>
           <div>
-        <Post message='Hey World '/>
-        <Post message='Hey Jimmy '/>
-        <Post/>
-        <Post/>
-        <Post/>
+            {postElements}
         </div>
       </PostsDiv>
     
