@@ -8,9 +8,12 @@ const Profile=(props)=>{
       <MainDiv>
         <InfoProfile/>
         <MyPosts 
-        post={props.post}
+        posts={props.profilePage.posts}
+        newPostText={props.profilePage.newPostText}
         //sending the function as a props
-        addPost={props.addPost}/>
+        addPost={props.addPost}
+        updateNewPostText={props.updateNewPostText}
+        />
     </MainDiv>
     )
 }

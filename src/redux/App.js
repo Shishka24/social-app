@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Profile from "./Components/Profile/Profile";
-import NavBar from "./Components/NavBar/NavBar";
-import Header from "./Components/Header/Header";
-import News from "./Components/News/News";
-import Dialogs from "./Components/Dialogs/Dialogs";
+import Profile from "../Components/Profile/Profile";
+import NavBar from "../Components/NavBar/NavBar";
+import Header from "../Components/Header/Header";
+import News from "../Components/News/News";
+import Dialogs from "../Components/Dialogs/Dialogs";
 
 function App(props) {
   return (
@@ -28,7 +28,11 @@ function App(props) {
               path="/profile"
               element={
                 //props from the state
-                <Profile post={props.posts} addPost={props.addPost} />
+                <Profile
+                  profilePage={props.profilePage}
+                  addPost={props.addPost}
+                  updateNewPostText={props.updateNewPostText}
+                />
               }
             />
             <Route path="/news" exact element={<News />} />

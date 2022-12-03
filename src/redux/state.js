@@ -1,4 +1,7 @@
-//for now create the state with all the information
+let rerenderTree = () => {
+  console.log("State it's been changed");
+};
+
 //information for the ProfilePage, dialogsPage as well
 let state = {
   profilePage: {
@@ -19,6 +22,7 @@ let state = {
         likesCount: 120,
       },
     ],
+    newPostText: "",
   },
   dialogsPage: {
     dialogs: [
@@ -60,15 +64,29 @@ let state = {
   },
 };
 //export without default
-export let addPost = (postMessage) => {
+export let addPost = () => {
   //create newObject for now hardcoding the id and likesCount
   //for the message we give as value what we will receive from the inputArea
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likesCount: 0,
   };
   //create a function that push the newPost to the state.profilePage.post
   state.profilePage.posts.push(newPost);
+  state.profilePage.newPostText = "";
+  // add the rerender function
+  rerenderTree(state);
 };
+//create a function for update post text value
+export let updateNewPostText = (newText) => {
+  //create a function that push the newPost to the state.profilePage.post
+  state.profilePage.newPostText = newText;
+  rerenderTree(state);
+};
+
+export const subscribe = (observer) => {
+  rerenderTree = observer;
+};
+
 export default state;
