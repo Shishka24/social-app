@@ -1,3 +1,7 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
+const SEND_MESSAGE = "SEND_MESSAGE";
 //create store (OPP) object
 let store = {
   _state: {
@@ -58,40 +62,61 @@ let store = {
           message: "Where is my IceCream?",
         },
       ],
+      newMessageBody: "",
     },
   },
   getState() {
     return this._state;
   },
-  _callSubscriber() {
-    console.log("State it's been changed");
-  },
-  addPost() {
-    //create newObject for now hardcoding the id and likesCount
-    //for the message we give as value what we will receive from the inputArea
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0,
-    };
-    //create a function that push the newPost to the state.profilePage.post
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
-    // add the rerender function
-    this._callSubscriber(this._state);
-  },
-  updateNewPostText(newText) {
-    //create a function that push the newPost to the state.profilePage.post
-    this._state.profilePage.newPostText = newText;
-    this._callSubscriber(this._state);
-  },
 
   subscribe(observer) {
     this._callSubscriber = observer;
   },
+  _callSubscriber() {
+    console.log("State it's been changed");
+  },
+
+  dispatch(action) {
+    if (action.type === ADD_POST) {
+      //create newObject for now hardcoding the id and likesCount
+      //for the message we give as value what we will receive from the inputArea
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0,
+      };
+      //create a function that push the newPost to the state.profilePage.post
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      // add the rerender function
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
+      //create a function that push the newPost to the state.profilePage.post
+      this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.dialogsPage.newMessageBody = action.body;
+      this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
+      let body = this._state.dialogsPage.newMessageBody;
+      this._state.dialogsPage.newMessageBody = "";
+      this._state.dialogsPage.messages.push({ id: 6, message: body });
+      this._callSubscriber(this._state);
+    }
+  },
 };
+export const addActionCreatorPost = () => ({ type: ADD_POST });
+export const updateNewPostActionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  newText: text,
+});
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
+export const updateNewMessageCreator = (body) => ({
+  type: UPDATE_NEW_MESSAGE_BODY,
+  body: body,
+});
 window.store = store;
 export default store;
 //store contain all the information about our state
-// _store has an under line because we dont want anyone change the owners data
+// _store has an under line because we dont want anyone change the owners data (private )
 // all the functions contain this. to precise that we calling exact this element

@@ -1,21 +1,26 @@
 import React from "react";
 import Post from "./Post/Post";
 import styled from "styled-components";
+import { addActionCreatorPost, updateNewPostActionCreator } from "../../../redux/state";
+
+
 
 const MyPosts=(props)=>{ 
-  let postElements=props.posts.map(
-    m=><Post message={m.message} likesCount={m.likesCount}/> )
+  let state=props.store.getState().profilePage;
+  let postElements=state.posts.map(
+    m=>
+    <Post message={m.message} likesCount={m.likesCount}/> )
 //creating a Ref 
 let newPostElement=React.createRef();
 //function addPost  used the current value from the textArea 
 let addPost=()=>{
-  //коррекция функции прихоходят как пропсы
-  props.addPost();
+  props.dispatch(addActionCreatorPost());
 }
 
 let onPostChange=()=>{
   let text=newPostElement.current.value;
-props.updateNewPostText(text);
+props.dispatch(updateNewPostActionCreator(text));
+
 }
   return (
       <PostsDiv>
