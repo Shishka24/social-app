@@ -14,14 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerenderTree = (state) => {
   root.render(
     <StrictMode>
-      <App
-        state={state}
-        addPost={store.addPost.bind(store)}
-        updateNewPostText={store.updateNewPostText.bind(store)}
-        profilePage={store._state.profilePage}
-        dialogs={store._state.dialogsPage.dialogs}
-        messages={store._state.dialogsPage.messages}
-      />
+      <App state={state} store={store} dispatch={store.dispatch.bind(store)} />
     </StrictMode>
   );
 };
@@ -30,3 +23,5 @@ let rerenderTree = (state) => {
 rerenderTree(store.getState());
 store.subscribe(rerenderTree);
 //Важный урок перерисовка данных
+//bind привязывает фунции значение оригинального обьяекта важно для OPP
+//так как значение обьекта теряется при его передаче особенно при колбек функиях

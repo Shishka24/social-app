@@ -20,7 +20,7 @@ function App(props) {
               exact
               element={
                 //props from the state
-                <Dialogs messages={props.messages} dialogs={props.dialogs} />
+                <Dialogs store={props.store} />
               }
             />
 
@@ -28,11 +28,7 @@ function App(props) {
               path="/profile"
               element={
                 //props from the state
-                <Profile
-                  profilePage={props.profilePage}
-                  addPost={props.addPost}
-                  updateNewPostText={props.updateNewPostText}
-                />
+                <Profile store={props.store} dispatch={props.dispatch} />
               }
             />
             <Route path="/news" exact element={<News />} />
