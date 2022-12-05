@@ -2,9 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
 import App from "./redux/App";
-import { addPost, updateNewPostText, subscribe } from "./redux/state";
 import "./index.css";
-import state from "./redux/state";
+import store from "./redux/state";
 //importing the function from the redux,to import the function need to use {}
 // import { addPost } from "./redux/state";
 
@@ -12,20 +11,22 @@ import state from "./redux/state";
 //send a function addPost as a props
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-let rerenderTree = () => {
+let rerenderTree = (state) => {
   root.render(
     <StrictMode>
       <App
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
-        profilePage={state.profilePage}
-        dialogs={state.dialogsPage.dialogs}
-        messages={state.dialogsPage.messages}
+        state={state}
+        addPost={store.addPost.bind(store)}
+        updateNewPostText={store.updateNewPostText.bind(store)}
+        profilePage={store._state.profilePage}
+        dialogs={store._state.dialogsPage.dialogs}
+        messages={store._state.dialogsPage.messages}
       />
     </StrictMode>
   );
 };
 
 // );
-rerenderTree(state);
-subscribe(rerenderTree);
+rerenderTree(store.getState());
+store.subscribe(rerenderTree);
+//Важный урок перерисовка данных
