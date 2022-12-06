@@ -1,3 +1,5 @@
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
@@ -77,34 +79,12 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      //create newObject for now hardcoding the id and likesCount
-      //for the message we give as value what we will receive from the inputArea
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-      };
-      //create a function that push the newPost to the state.profilePage.post
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = "";
-      // add the rerender function
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      //create a function that push the newPost to the state.profilePage.post
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.body;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let body = this._state.dialogsPage.newMessageBody;
-      this._state.dialogsPage.newMessageBody = "";
-      this._state.dialogsPage.messages.push({ id: 6, message: body });
-      this._callSubscriber(this._state);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._callSubscriber(this._state);
   },
 };
+
 export const addActionCreatorPost = () => ({ type: ADD_POST });
 export const updateNewPostActionCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
