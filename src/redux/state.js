@@ -1,10 +1,6 @@
 import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE_NEW_MESSAGE_BODY";
-const SEND_MESSAGE = "SEND_MESSAGE";
-//create store (OPP) object
+
 let store = {
   _state: {
     profilePage: {
@@ -84,19 +80,5 @@ let store = {
     this._callSubscriber(this._state);
   },
 };
-
-export const addActionCreatorPost = () => ({ type: ADD_POST });
-export const updateNewPostActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageCreator = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body: body,
-});
 window.store = store;
 export default store;
-//store contain all the information about our state
-// _store has an under line because we dont want anyone change the owners data (private )
-// all the functions contain this. to precise that we calling exact this element
