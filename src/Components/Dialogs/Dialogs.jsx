@@ -19,7 +19,7 @@ const Dialogs=(props)=>{
     //func sendMessageCreator getting the type as SEND_MESSAGE,
     //SEND_MESSAGE get's to the action when the newMessageBody is empty 
     //when it will push the new message with the new id and the message(body)  
-    let onSendMEssageClick=()=>{
+    let onSendMessageClick=()=>{
         props.store.dispatch(sendMessageCreator());
     }
     //creating the func onChange with event listener 
@@ -31,16 +31,14 @@ const Dialogs=(props)=>{
         props.store.dispatch(updateNewMessageCreator(body))
     }
     return(
-
-<div className={s.dialogs}>   
+        <div className={s.dialogs}>   
         <div className={s.dialogsUsers}>
         {dialogsElements}
         </div>      
-    <div className={s.messages}>
-    <div>
-
-    {messagesElements}
-    </div>
+        <div className={s.messages}>
+        <div>
+        {messagesElements}
+        </div>
     <div>
         <div>
             <textarea 
@@ -49,7 +47,7 @@ const Dialogs=(props)=>{
             placeholder="Write a Message to Your Body"></textarea>
         </div>
         <div>
-            <button onClick={onSendMEssageClick}>SEND</button>
+            <button onClick={onSendMessageClick}>SEND</button>
         </div>
     </div>
     </div>

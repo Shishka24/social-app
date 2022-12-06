@@ -18,16 +18,11 @@ function App(props) {
             <Route
               path="/dialogs"
               exact
-              element={
-                //props from the state
-                <Dialogs store={props.store} />
-              }
+              element={<Dialogs store={props.store} />}
             />
-
             <Route
               path="/profile"
               element={
-                //props from the state
                 <Profile store={props.store} dispatch={props.dispatch} />
               }
             />

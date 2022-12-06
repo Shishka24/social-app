@@ -7,20 +7,15 @@ import { addActionCreatorPost, updateNewPostActionCreator } from "../../../redux
 
 const MyPosts=(props)=>{ 
   let state=props.store.getState().profilePage;
-  let postElements=state.posts.map(
-    m=>
-    <Post message={m.message} likesCount={m.likesCount}/> )
-//creating a Ref 
-let newPostElement=React.createRef();
-//function addPost  used the current value from the textArea 
+  let postElements=state.posts.map(m=>
+    <Post message={m.message}   likesCount={m.likesCount}/> )
+let newText=state.newPostText;
 let addPost=()=>{
-  props.dispatch(addActionCreatorPost());
+  props.store.dispatch(addActionCreatorPost());
 }
-
-let onPostChange=()=>{
-  let text=newPostElement.current.value;
-props.dispatch(updateNewPostActionCreator(text));
-
+let onPostChange=(e)=>{
+  let text=e.target.value
+  props.store.dispatch(updateNewPostActionCreator(text));
 }
   return (
       <PostsDiv>
@@ -29,8 +24,8 @@ props.dispatch(updateNewPostActionCreator(text));
           <div>
           <textarea 
           onChange={onPostChange}
-          ref={newPostElement} 
-          value={props.newPostText}></textarea>
+          placeholder="What's Up???"
+          value={newText}></textarea>
           </div>
           <div>
           <button onClick={addPost}>Add Post</button>
