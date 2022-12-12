@@ -4,7 +4,7 @@ import Profile from "../Components/Profile/Profile";
 import NavBar from "../Components/NavBar/NavBar";
 import Header from "../Components/Header/Header";
 import News from "../Components/News/News";
-import Dialogs from "../Components/Dialogs/Dialogs";
+import DialogsContainer from "../Components/Dialogs/DialogsContainer";
 
 function App(props) {
   return (
@@ -18,14 +18,9 @@ function App(props) {
             <Route
               path="/dialogs"
               exact
-              element={<Dialogs store={props.store} />}
+              element={<DialogsContainer store={props.store} />}
             />
-            <Route
-              path="/profile"
-              element={
-                <Profile store={props.store} dispatch={props.dispatch} />
-              }
-            />
+            <Route path="/profile" element={<Profile store={props.store} />} />
             <Route path="/news" exact element={<News />} />
           </Routes>
         </div>
