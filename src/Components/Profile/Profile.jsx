@@ -1,18 +1,14 @@
 import styled from "styled-components";
 import InfoProfile from "./InfoProfile/InfoProfile";
-import MyPosts from "./MyPosts/MyPosts";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 const Profile=(props)=>{
     return (
       <MainDiv>
         <InfoProfile/>
-        <MyPosts 
+        <MyPostsContainer
         store={props.store}
-        // posts={props.profilePage.posts}
-        // newPostText={props.profilePage.newPostText}
-        //sending the function as a props
-        dispatch={props.dispatch}
         />
     </MainDiv>
     )
