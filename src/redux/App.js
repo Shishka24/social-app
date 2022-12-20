@@ -15,12 +15,8 @@ function App(props) {
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/" exact element={<News />} />
-            <Route
-              path="/dialogs"
-              exact
-              element={<DialogsContainer store={props.store} />}
-            />
-            <Route path="/profile" element={<Profile store={props.store} />} />
+            <Route path="/dialogs" exact element={<DialogsContainer />} />
+            <Route path="/profile" element={<Profile />} />/
             <Route path="/news" exact element={<News />} />
           </Routes>
         </div>
