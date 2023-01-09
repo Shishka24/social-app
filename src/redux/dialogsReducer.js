@@ -42,21 +42,33 @@ let initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
+  //declarition of copyState, using the spread operator
+  //so thee state will have his initialState till the time wi will rewrite new proprieties
+  // not the best practice
+  //  let stateCopy;
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_BODY: {
-      let copyState = { ...state };
-      copyState.dialogs = [...state.dialogs];
-      copyState.newMessageBody = action.body;
-      return copyState;
-    }
-    case SEND_MESSAGE: {
-      let copyState = { ...state };
-      copyState.messages = [...state.messages];
-      let body = copyState.newMessageBody;
-      copyState.newMessageBody = "";
-      copyState.messages.push({ id: 6, message: body });
-      return copyState;
-    }
+    case UPDATE_NEW_MESSAGE_BODY:
+      // since we change the proprieties of the NewMessBody
+      // we adding after the spread operator the newMessBody case
+      return {
+        ...state,
+        newMessageBody: action.body,
+      };
+    //this one we not using no more, since we reassign it
+    // stateCopy.newMessageBody = action.body;
+    case SEND_MESSAGE:
+      let body = state.newMessageBody;
+      //also we can use the return
+      return {
+        ...state,
+        newMessageBody: "",
+        //create a new array , copy all the el from the original array, then adding (push) new el
+        messages: [...state.messages, { id: 6, message: body }],
+        // those one I used before
+        //stateCopy.newMessageBody = "";
+        // stateCopy.messages.push({ id: 6, message: body });
+      };
+
     default:
       return state;
   }

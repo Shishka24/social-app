@@ -5,6 +5,7 @@ import NavBar from "../Components/NavBar/NavBar";
 import Header from "../Components/Header/Header";
 import News from "../Components/News/News";
 import DialogsContainer from "../Components/Dialogs/DialogsContainer";
+import UsersContainer from "../Components/Users/UsersContainer";
 
 function App(props) {
   return (
@@ -17,6 +18,7 @@ function App(props) {
             <Route path="/" exact element={<News />} />
             <Route path="/dialogs" exact element={<DialogsContainer />} />
             <Route path="/profile" element={<Profile />} />/
+            <Route path="/users" element={<UsersContainer />} />/
             <Route path="/news" exact element={<News />} />
           </Routes>
         </div>
