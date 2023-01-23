@@ -1,60 +1,15 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 
 //create initialState
 let initialState = {
   users: [],
-  // users: [
-  // {
-  //   id: 1,
-  //   photoURL:
-  //     "https://cdn.pixabay.com/photo/2017/01/31/21/22/avatar-2027363__340.png",
-  //   fullName: "Vlad",
-  //   status: "Hello There",
-  //   location: {
-  //     city: "Montreal",
-  //     country: "Canada",
-  //     followed: false,
-  //   },
-  // },
-  // {
-  //   id: 2,
-  //   photoURL:
-  //     "https://cdn.pixabay.com/photo/2017/01/31/21/22/avatar-2027363__340.png",
-  //   fullName: "Andrey",
-  //   status: "Salam",
-  //   location: {
-  //     city: "Montreal",
-  //     country: "Canada",
-  //     followed: true,
-  //   },
-  // },
-  // {
-  //   id: 3,
-  //   photoURL:
-  //     "https://cdn.pixabay.com/photo/2017/01/31/21/22/avatar-2027363__340.png",
-  //   fullName: "Anya",
-  //   status: "Hi",
-  //   location: {
-  //     city: "Montreal",
-  //     country: "Canada",
-  //     followed: false,
-  //   },
-  // },
-  // {
-  //   id: 74,
-  //   photoURL:
-  //     "https://cdn.pixabay.com/photo/2017/01/31/21/22/avatar-2027363__340.png",
-  //   fullName: "Alex",
-  //   status: "Shalom",
-  //   location: {
-  //     city: "Montreal",
-  //     country: "Canada",
-  //     followed: false,
-  //   },
-  // },
-  // ],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 2,
 };
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -81,7 +36,19 @@ const usersReducer = (state = initialState, action) => {
     case SET_USERS: {
       return {
         ...state,
-        users: [...state.users, ...action.users],
+        users: action.users,
+      };
+    }
+    case SET_CURRENT_PAGE: {
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    }
+    case SET_TOTAL_USERS_COUNT: {
+      return {
+        ...state,
+        totalUsersCount: action.count,
       };
     }
     default:
@@ -92,3 +59,11 @@ export default usersReducer;
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
 export const unFollowAC = (userId) => ({ type: UNFOLLOW, userId });
+export const setCurrentPageAC = (currentPage) => ({
+  type: SET_CURRENT_PAGE,
+  currentPage: currentPage,
+});
+export const setTotalUsersCountAC = (totalUsersCount) => ({
+  type: SET_TOTAL_USERS_COUNT,
+  count: totalUsersCount,
+});
