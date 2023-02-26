@@ -2,6 +2,7 @@ import s from "./Dialogs.module.css";
 // import { NavLink } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import { Button } from "react-bootstrap";
 
 const Dialogs = (props) => {
   //getting the data from the store using the props
@@ -46,7 +47,9 @@ const Dialogs = (props) => {
             ></textarea>
           </div>
           <div>
-            <button onClick={onSendMessageClick}>SEND</button>
+            <Button variant="outline-primary" onClick={onSendMessageClick}>
+              SEND
+            </Button>
           </div>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import Post from "./Post/Post";
 import styled from "styled-components";
+// import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 
 const MyPosts = (props) => {
   let postElements = props.post.map((m) => (
@@ -15,7 +17,7 @@ const MyPosts = (props) => {
     props.updateNewPostText(text);
   };
   return (
-    <PostsDiv>
+    <div>
       <h3>My posts</h3>
       <div>
         <div>
@@ -26,16 +28,18 @@ const MyPosts = (props) => {
             value={props.newText}
           ></textarea>
         </div>
-        <div>
-          <button onClick={onAddPost}>Add Post</button>
-        </div>
+        {/* <div> */}
+        <Button variant="outline-primary" onClick={onAddPost}>
+          Add Post
+        </Button>
+        {/* </div> */}
       </div>
       <div>{postElements}</div>
-    </PostsDiv>
+    </div>
   );
 };
 
-const PostsDiv = styled.div`
-  padding: 20px;
-`;
+// const PostsDiv = styled.div`
+//   padding: 20px;
+// `;
 export default MyPosts;

@@ -19,7 +19,7 @@ const NavBar = () => {
         <NavLinkStyled to="/users">Users</NavLinkStyled>
       </div>
       <div>
-        <a>Settings</a>
+        <a href="a">Settings</a>
       </div>
     </Nav>
   );
