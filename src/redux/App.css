@@ -9,5 +9,4 @@ grid-template-columns: 2fr 10fr ;
 .app-wrapper-content{
   background-color: lightblue;
   grid-area:c;
-  /* color:black; */
 }

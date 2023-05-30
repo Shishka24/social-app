@@ -17,7 +17,8 @@ function App(props) {
           <Routes>
             <Route path="/" exact element={<News />} />
             <Route path="/dialogs" exact element={<DialogsContainer />} />
-            <Route path="/profile/*" element={<ProfileContainer />} />/
+            <Route path="/profile/:id" element={<ProfileContainer />} />
+            <Route path="/profile/" element={<ProfileContainer />} />
             <Route path="/users" element={<UsersContainer />} />/
             <Route path="/news" exact element={<News />} />
           </Routes>

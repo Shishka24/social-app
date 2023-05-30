@@ -3,40 +3,16 @@ const SEND_MESSAGE = "SEND_MESSAGE";
 
 let initialState = {
   dialogs: [
-    {
-      id: 1,
-      name: "Vlad",
-    },
-    {
-      id: 2,
-      name: "Anya",
-    },
-    {
-      id: 3,
-      name: "Yan",
-    },
-    {
-      id: 4,
-      name: "Mario",
-    },
-    {
-      id: 5,
-      name: "Andrey",
-    },
+    { id: 1, name: "Vlad" },
+    { id: 2, name: "Anya" },
+    { id: 3, name: "Yan" },
+    { id: 4, name: "Mario" },
+    { id: 5, name: "Andrey" },
   ],
   messages: [
-    {
-      id: 1,
-      message: "Hi",
-    },
-    {
-      id: 2,
-      message: "What's Up?",
-    },
-    {
-      id: 3,
-      message: "Where is my IceCream?",
-    },
+    { id: 1, message: "Hi" },
+    { id: 2, message: "What's Up?" },
+    { id: 3, message: "Where is my IceCream?" },
   ],
   newMessageBody: "",
 };
@@ -68,7 +44,6 @@ const dialogsReducer = (state = initialState, action) => {
         //stateCopy.newMessageBody = "";
         // stateCopy.messages.push({ id: 6, message: body });
       };
-
     default:
       return state;
   }
